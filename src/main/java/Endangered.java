@@ -23,9 +23,12 @@ public class Endangered extends  Animal{
     }
 
     public static void save(Endangered endangered){
-        String sql = "INSERT INTO endangered(name,animalId) VALUE (:name, :animalId)";
+        String sql = "INSERT INTO animals(name,animalId) VALUES (:name, :animalId)";
         try(Connection con = DB.sql2o.open()){
-            con.createQuery (sql).bind (endangered).executeUpdate ();
+            con.createQuery (sql).addParameter("name", endangered.name)
+                    .addParameter("animalId", endangered.animalId)
+//                    .bind(endangered)
+                    .executeUpdate ();
 
         }catch (Sql2oException ex ){
             System.out.println(ex);
@@ -34,7 +37,7 @@ public class Endangered extends  Animal{
     }
 
     public static List<Endangered> relative_All(){
-        String sql = "SELECT * FROM endangered ";
+        String sql = "SELECT * FROM animals ";
 
         try(Connection con = DB.sql2o.open()){
             Query query =con.createQuery(sql);
@@ -42,5 +45,21 @@ public class Endangered extends  Animal{
             return query.executeAndFetch(Endangered.class);
 
         }
+    }
+
+
+    public static void clearAllAnimals() {
+        String sql = "DELETE FROM animals *;";
+
+        try (Connection con = DB.sql2o.open()) {
+            con.createQuery(sql)
+                    .executeUpdate();
+        } catch (Sql2oException ey) {
+            System.out.println(ey);
+        }
+    }
+
+    public int getAnimalId() {
+        return animalId;
     }
 }
