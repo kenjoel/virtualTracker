@@ -5,7 +5,7 @@ import org.sql2o.Sql2oException;
 import java.util.List;
 
 public class Endangered extends  Animal{
-    private int animalId;
+    private static int animalId;
 
     //Constants health
     public final int HEALTHY = 10;
@@ -59,7 +59,9 @@ public class Endangered extends  Animal{
         }
     }
 
-    public int getAnimalId() {
+    public static int getAnimalId() {
         return animalId;
     }
+
+
 }
