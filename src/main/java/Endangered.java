@@ -7,7 +7,8 @@ import java.util.List;
 public class Endangered{
     private int id;
     private String name;
-    private static int animalId;
+    private static int age;
+    private String health;
 
 
     //Constant health
@@ -20,19 +21,19 @@ public class Endangered{
     public final int YOUNG = 4;
     public final int OLD = 8;
 
-    public Endangered(String name, int animalId){
+    public Endangered(String name, String health, int age){
         this.name = name;
-        this.animalId = animalId;
+        this.health = health;
+        this.age = age;
     }
 
     public static void save(Endangered endangered){
         String sql = "INSERT INTO endangered(name,health, age) VALUES (:name, :health, :age)";
         try(Connection con = DB.sql2o.open()){
-            int id = (int) con.createQuery (sql)
+            con.createQuery (sql)
                     .bind(endangered)
                     .executeUpdate ()
                     .getKey();
-            endangered.setId(id);
         }catch (Sql2oException ex ){
             System.out.println(ex);
 
@@ -59,10 +60,13 @@ public class Endangered{
         }
     }
 
-    public static int getAnimalId() {
-        return animalId;
+    public static int getAge() {
+        return age;
     }
 
+    public String getHealth() {
+        return health;
+    }
 
     public void setId(int id) {
         this.id = id;

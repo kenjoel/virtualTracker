@@ -1,4 +1,3 @@
-import org.sql2o.Sql2o;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -20,20 +19,10 @@ public class App {
     public static void main(String[] args) { //type “psvm + tab” to autocreate this
         port(getHerokuAssignedPort());
         staticFileLocation("/public");
-        String connectionString = "jdbc:postgresql://localhost:5432/wildlife_tracker"; //connect to todolist, not todolist_test!\n";  //"jdbc:h2:~/todolist.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "moringa", "://postgres");
+
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            Endangered animal = new Endangered("PANDA",1);
-            Endangered.save(animal);
-            Sightings sight = new Sightings("Pandemic", "Bob","Zoo B");
-            Sightings.save(sight);
-            List<Endangered> allCategories = Endangered.relative_All();
-            model.put("animals", allCategories);
-
-            List<Sightings> sightings = Sightings.retrieveFromSightings();
-            model.put("sightings", sightings);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 

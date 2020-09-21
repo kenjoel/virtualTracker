@@ -1,29 +1,73 @@
 {{#partial "content"}}
-    <div class="row" style="background-image:url('images/tof-mayanoff-CS5vT_Kin3E-unsplash.jpg');background-size:cover;background-repeat:no-repeat; height:1000px;">
-        <div class="col-md-8 col-8" >
-        </div>
-        <div class="col-md-4 col-4">
-            <div class="aside-left">
-                {{#if animals}}
-                    {{#each animals}}
-                    <div class="card">
-                        <p>{{getname}}</p>
-                    </div>
-                    {{/each}}
+    <div class="row">
+        <div class="col-md-4 col-4" >
+            <div class="view overlay">
+                <img class="card-img-top" src="images/geran-de-klerk-bKhETeDV1WM-unsplash.jpg" alt="Card image cap" >
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!-- Card content -->
+            <div class="card-body">
 
-                    {{#if sightings}}
-                        <ul>
-                            <li>Ranger: {{getrangername}}</li>
-                            <li>Location: {{location}}</li>
-                            <li>Species: {{animalname}}</li>
-                        </ul>
-                    {{/if}}
-                {{else}}
-                    <a href="/new" class="btn btn-primary">New Sighting</a>
-                {{/if}}
+                <!-- Social shares button -->
+                <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a>
+                <!-- Title -->
+                <h4 class="card-title">Endangered Animals</h4>
+                <hr>
+                <!-- Text -->
+                <h3 class="card-text text-warning">Add Endangered animal</h3>
+                <!-- Link -->
+                <a href="/endangered/new" onClick="secondClick()" class="white-text d-flex justify-content-end"><h5>Add Endangered <i class="fas fa-angle-double-right"></i></h5></a>
+            </div>
+            </div>
+            <!-- Card Light -->
+            <div class="col-md-4 col-4">
+                <div class="view overlay">
+                    <img class="card-img-top" src="images/harshil-gudka-wFj_uABQXjo-unsplash.jpg" alt="Card image cap" >
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <!-- Card content -->
+                <div class="card-body">
+
+                    <!-- Social shares button -->
+                    <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a>
+                    <!-- Title -->
+                    <h4 class="card-title">Animal</h4>
+                    <hr>
+                    <!-- Text -->
+                    <h3 class="card-text text-warning">Wild Animal</h3>
+                    <!-- Link -->
+                    <a href="/endangered/new" class="white-text d-flex justify-content-end"><h5>Wild Animal<i class="fas fa-angle-double-right"></i></h5></a>
+                </div>
+            </div>
+
+        <div class="col-md-4 col-4">
+            <div class="view overlay">
+                <img class="card-img-top" src="images/alicia-steels-5AxRCxe_fa0-unsplash.jpg" alt="Card image cap" >
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!-- Card content -->
+            <div class="card-body">
+
+                <!-- Social shares button -->
+                <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a>
+                <!-- Title -->
+                <h4 class="card-title">Sighting</h4>
+                <hr>
+                <!-- Text -->
+                <h3 class="card-text text-warning">Report Sighting</h3>
+                <!-- Link -->
+                <a href="/endangered/new" class="white-text d-flex justify-content-end"><h5>Report sighting <i class="fas fa-angle-double-right"></i></h5></a>
             </div>
         </div>
+        </div>
     </div>
+
 {{/partial}}
 
 {{>layout.hbs}}

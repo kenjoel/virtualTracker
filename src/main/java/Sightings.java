@@ -36,12 +36,11 @@ public class Sightings{
     public static void save(Sightings sightings){
         String sql = "INSERT INTO sightings (animalname, rangername, location) VALUES (:animalname, :rangername, :location);";
         try(Connection connection = DB.sql2o.open()){
-            int id = (int) connection.createQuery(sql, true)
+             connection.createQuery(sql, true)
                     .addParameter("animalname", sightings.animalname)
                     .addParameter("rangername", sightings.rangername)
                     .addParameter("location", sightings.location)
-                    .executeUpdate().getKey();
-            sightings.setId(id);
+                    .executeUpdate();
         }catch (Sql2oException ex ){
             System.out.println(ex);
         }
