@@ -1,0 +1,29 @@
+{{#partial "content"}}
+    <div class="row" style="background-image:url('images/tof-mayanoff-CS5vT_Kin3E-unsplash.jpg');background-size:cover;background-repeat:no-repeat; height:1000px;">
+        <div class="col-md-8 col-8" >
+        </div>
+        <div class="col-md-4 col-4">
+            <div class="aside-left">
+                {{#if animals}}
+                    {{#each animals}}
+                    <div class="card">
+                        <p>{{getname}}</p>
+                    </div>
+                    {{/each}}
+
+                    {{#if sightings}}
+                        <ul>
+                            <li>Ranger: {{getrangername}}</li>
+                            <li>Location: {{location}}</li>
+                            <li>Species: {{animalname}}</li>
+                        </ul>
+                    {{/if}}
+                {{else}}
+                    <a href="/new" class="btn btn-primary">New Sighting</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{>layout.hbs}}

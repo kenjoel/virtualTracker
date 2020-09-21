@@ -7,7 +7,7 @@ import org.sql2o.Sql2o;
 
 import static org.junit.Assert.*;
 
-public class SightingsTest {
+public class AnimalTest {
 
     private static Connection conn;
 
@@ -32,17 +32,18 @@ public class SightingsTest {
 
     @Test
     public void instanceIsValid(){
-        Sightings sightings = new Sightings("rabbit","moringa", "Nairobi");
-        assertTrue(sightings instanceof Sightings);
+        Animal animal = new Animal("rabbit");
+        assertTrue(animal instanceof Animal);
     }
 
     @Test
     public void saveMethodWorks(){
-        Sightings bob = new Sightings("kangaroo", "ken", "Kenya");
-        Sightings.save(bob);
+        Animal bob = new Animal("kangaroo");
+        Animal.save(bob);
         System.out.println("successfully saved");
-        assertEquals(bob.getRangername(), Sightings.retrieveFromSightings().get(0).getRangername());
+        assertEquals(bob.getName(), Animal.relative_All().get(0).getName());
     }
+
 
 
 }

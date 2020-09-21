@@ -4,10 +4,13 @@ import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public class Endangered extends  Animal{
+public class Endangered{
+    private int id;
+    private String name;
     private static int animalId;
 
-    //Constants health
+
+    //Constant health
     public final int HEALTHY = 10;
     public final int ILL = 0;
     public final int OKAY = 5;
@@ -23,13 +26,13 @@ public class Endangered extends  Animal{
     }
 
     public static void save(Endangered endangered){
-        String sql = "INSERT INTO animals(name,animalId) VALUES (:name, :animalId)";
+        String sql = "INSERT INTO endangered(name,health, age) VALUES (:name, :health, :age)";
         try(Connection con = DB.sql2o.open()){
-            con.createQuery (sql).addParameter("name", endangered.name)
-                    .addParameter("animalId", endangered.animalId)
-//                    .bind(endangered)
-                    .executeUpdate ();
-
+            int id = (int) con.createQuery (sql)
+                    .bind(endangered)
+                    .executeUpdate ()
+                    .getKey();
+            endangered.setId(id);
         }catch (Sql2oException ex ){
             System.out.println(ex);
 
@@ -37,20 +40,17 @@ public class Endangered extends  Animal{
     }
 
     public static List<Endangered> relative_All(){
-        String sql = "SELECT * FROM animals ";
-
+        String sql = "SELECT * FROM endangered";
         try(Connection con = DB.sql2o.open()){
             Query query =con.createQuery(sql);
             System.out.println(query.executeAndFetch(Endangered.class));
             return query.executeAndFetch(Endangered.class);
-
         }
     }
 
 
     public static void clearAllAnimals() {
-        String sql = "DELETE FROM animals *;";
-
+        String sql = "DELETE FROM endangered*;";
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql)
                     .executeUpdate();
@@ -61,6 +61,15 @@ public class Endangered extends  Animal{
 
     public static int getAnimalId() {
         return animalId;
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String name(){
+        return name;
     }
 
 
