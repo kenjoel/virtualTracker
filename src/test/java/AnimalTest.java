@@ -21,7 +21,7 @@ public class AnimalTest {
     @After
     public void tearDown() throws Exception {
         System.out.println("database disconnecting");
-        Sightings.clearAllAnimals();
+        Animal.clearAllAnimals();
     }
 
     @AfterClass
@@ -39,9 +39,17 @@ public class AnimalTest {
     @Test
     public void saveMethodWorks(){
         Animal bob = new Animal("kangaroo");
-        Animal.save(bob);
+        bob.save();
         System.out.println("successfully saved");
         assertEquals(bob.getName(), Animal.relative_All().get(0).getName());
+    }
+
+    @Test
+    public void updateWorks(){
+        Animal frank = new Animal("piglet");
+        frank.save();
+        frank.update();
+        assertEquals(frank.getName(), Animal.find(frank.getId()).getName());
     }
 
 

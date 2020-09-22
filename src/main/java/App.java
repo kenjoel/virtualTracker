@@ -49,6 +49,26 @@ public class App {
             return modelAndView(model, "endangered.hbs");
         }, new HandlebarsTemplateEngine());
 
+
+        get("/sightings", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return modelAndView(model, "sightings.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/saved", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List sightings = Sightings.retrieveFromSightings();
+            model.put("sightings", sightings);
+            return new ModelAndView(model,"sight.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/animal/:id/edit", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("animal", Animal.find(Integer.parseInt(request.params(":id"))));
+            return new ModelAndView(model, "editForm.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //posting animal edit form details
 //        //get: show a form to create a new category
 //        get("/categories/new", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
@@ -58,14 +78,27 @@ public class App {
 //        }, new HandlebarsTemplateEngine());
 
         //post: process a form to create a new category
-        post("/sightings", (req, res) -> { //new
+
+        post("/succ", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int id = Integer.parseInt(request.params(":id"));
+            String name = request.queryParams("name");
+            Animal animal = Animal.find(id);
+            animal.setName(name);
+            animal.update();
+            return new ModelAndView(model, "succ.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/succ", (req, res) -> { //new
             Map<String, Object> model = new HashMap<>();
             String animalname = req.queryParams("animalname");
-            String rangername = req.queryParams("rangername");
+            String rangername = req.queryParams("ranger");
             String location = req.queryParams("location");
-
-            res.redirect("/endangered");
-            return null;
+            Sightings sightings = new Sightings(animalname,rangername,location);
+            sightings.save();
+            model.put("sightings", sightings);
+            return modelAndView(model, "succ.hbs");
         }, new HandlebarsTemplateEngine());
 
 
@@ -81,6 +114,15 @@ public class App {
             System.out.println("Please enter all input fields.");
             return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        post("/wildlife", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = req.queryParams("name");
+            Animal animal = new Animal(name);
+            animal.save();
+            return new ModelAndView(model,"ess.hbs");
+        }, new HandlebarsTemplateEngine());
+
 
     }
 

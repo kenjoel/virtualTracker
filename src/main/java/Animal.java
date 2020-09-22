@@ -48,14 +48,14 @@ public  class Animal {
 
 
 
-    public static void save(Animal animal){
+    public void save(){
         String sql = "INSERT INTO animals(name) VALUES (:name);";
         try(Connection con = DB.sql2o.open()){
-            int id = (int) con.createQuery (sql)
-                    .bind(animal)
+            int id = (int) con.createQuery (sql, true)
+                    .addParameter("name", name)
                     .executeUpdate ()
                     .getKey();
-            animal.setId(id);
+            setId(id);
         }catch (Sql2oException ex ){
             System.out.println(ex);
 
@@ -63,8 +63,10 @@ public  class Animal {
     }
 
 
+
+
     public static List<Animal> relative_All(){
-        String sql = "SELECT * FROM animals";
+        String sql = "SELECT * FROM animals;";
         try(Connection con = DB.sql2o.open()){
             Query query =con.createQuery(sql);
             System.out.println(query.executeAndFetch(Endangered.class));
@@ -84,4 +86,24 @@ public  class Animal {
     }
 
 
+    public static Animal find(int id) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM animals WHERE id = :id";
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetchFirst(Animal.class);
+        }
+    }
+
+
+    public void update() {
+        try(Connection con = DB.sql2o.open()){
+            String sql = "UPDATE animals SET name = :name WHERE id = :id";
+            con.createQuery(sql)
+                    .addParameter("name", name)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        }
+    }
 }

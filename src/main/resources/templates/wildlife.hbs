@@ -2,12 +2,12 @@
     <div class="row">
         <div class="col">
             <div class="container">
-                {{#if endangered}}
-                    {{#each endangered}}
+                {{#if animals}}
+                    {{#each animals}}
                         <div class="main">
                             <p>Animal Name: {{name}}</p>
-                            <p>Animal Status: {{health}}</p>
-                            <p>Animal Age: {{age}}</p>
+                            <a class="btn btn-primary" href="/edit">EDIT</a>
+                            <a class="btn btn-danger" href="/delete">DELETE</a>
                         </div>
                     {{/each}}
                 {{/if}}

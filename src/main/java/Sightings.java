@@ -33,7 +33,7 @@ public class Sightings{
     }
 
     //Methods for the sightings Table
-    public  void save(Sightings sightings){
+    public  void save(){
         String sql = "INSERT INTO sightings (animalname, rangername, location) VALUES (:animalname, :rangername, :location);";
         try(Connection connection = DB.sql2o.open()){
              int id = (int) connection.createQuery(sql, true)
