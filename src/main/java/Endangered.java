@@ -27,11 +27,13 @@ public class Endangered{
         this.age = age;
     }
 
-    public static void save(Endangered endangered){
+    public void save(){
         String sql = "INSERT INTO endangered(name,health, age) VALUES (:name, :health, :age)";
         try(Connection con = DB.sql2o.open()){
-            con.createQuery (sql)
-                    .bind(endangered)
+            this.id = (int) con.createQuery (sql, true)
+                    .addParameter("name", name)
+                    .addParameter("health", health)
+                    .addParameter("age", age)
                     .executeUpdate ()
                     .getKey();
         }catch (Sql2oException ex ){

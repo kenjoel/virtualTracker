@@ -31,6 +31,16 @@ public class App {
             return new ModelAndView(model, "animalForm.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/endangerednew", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return modelAndView(model,"endangeredForm.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/sightingsnew", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return modelAndView(model,"sightingsForm.hbs");
+        }, new HandlebarsTemplateEngine());
+
 //        //get: show a form to create a new category
 //        get("/categories/new", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
@@ -50,7 +60,27 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
+
+
+        //post methods
+        post("/endangered/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            String health = request.queryParams("health");
+            int age = Integer.parseInt(request.queryParams("age"));
+            try {
+                Endangered endangered = new Endangered(name, health, age);
+                endangered.save();
+            } catch (IllegalArgumentException exception) {
+                System.out.println("Please enter all input fields.");
+            }
+            response.redirect("/animals");
+            return new ModelAndView(model, "endangered.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
+
+
 
 
     }

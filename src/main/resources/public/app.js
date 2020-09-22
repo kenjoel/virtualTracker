@@ -9,5 +9,4 @@ var typed=new Typed(`#type`,{
      smartBackspace:true,
      loop: true,
    })
-
 })
