@@ -21,7 +21,6 @@ public class App {
         staticFileLocation("/public");
 
         //postgresql-rugged-50609
-        //postgres://rmbmjsglawjnca:783febd5f6a94cb01223ea6cd0a67f292bb3fc4721fc62c54ffdd60349aa183f@ec2-54-160-202-3.compute-1.amazonaws.com:5432/dd3eb1kj21jv1d
 
 
         get("/", (req, res) -> {
