@@ -1,0 +1,35 @@
+{{#partial "content"}}
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-4 col-lg-8">
+            <div class="container">
+                <form action="/success" method="post">
+                    <div class="form-group">
+                        <label for="name">Animal Name</label>
+                        <input name="name" id="name" type="text" class="form-control transparentInputFields">
+                    </div>
+                        <div class="form-group ">
+                            <label for="health">Health:</label>
+                            <select id="health" name="health" type="text" class="form-control transparentInputFields">
+                                <option value="Healthy">Healthy</option>
+                                <option value="Okay">Okay</option>
+                                <option value="Ill">Ill</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age:</label>
+                            <select id="age" name="age" type="text" class="form-control transparentInputFields">
+                                <option value="Newborn">Newborn</option>
+                                <option value="Young">Young</option>
+                                <option value="Adult">Adult</option>
+                            </select>
+                        </div>
+                    <button type="submit" class="btn btn-info">submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{>layout.hbs}}

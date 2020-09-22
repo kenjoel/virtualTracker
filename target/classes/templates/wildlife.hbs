@@ -1,0 +1,21 @@
+{{#partial "content"}}
+    <div class="row">
+        <div class="col">
+            <div class="container">
+                {{#if animals}}
+                    {{#each animals}}
+                        <div class="main">
+                            <p>Animal Name: {{name}}</p>
+                            <a class="btn btn-primary" href="/animals/{{id}}/edit">EDIT</a>
+                            <a class="btn btn-danger" href="/animals/{{id}}/delete">DELETE</a>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    <a href="/animalnew" class="btn btn-info">Add Animal</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{>layout.hbs}}

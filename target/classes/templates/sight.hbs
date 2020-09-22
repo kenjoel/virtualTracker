@@ -1,0 +1,27 @@
+{{#partial "content"}}
+    <div class="row">
+        <div class="col">
+            <div class="container">
+                {{#if sightings}}
+                    {{#each sightings}}
+                        <div class="main">
+                            <div class="card">
+                                <div class="card-title">
+                                    <p>Animal Name: {{animalname}}</p>
+                                </div>
+                                <div class="card-body">
+                                    <p>Sight Location: {{location}}</p>
+                                    <p>Ranger Name: {{rangername}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    <a href="/sightings" class="btn btn-info">Report Sighting</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{>layout.hbs}}

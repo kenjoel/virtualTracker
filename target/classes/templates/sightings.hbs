@@ -1,0 +1,31 @@
+{{#partial "content"}}
+    <div class="row">
+        <div class="col-md-4 col-lg-8">
+            <div class="container">
+                <form action="/succ" method="post">
+                    <div class="form-group">
+                        <label for="name">Animal Name</label>
+                        <input name="animalname" id="animalname" type="text" class="form-control transparentInputFields">
+                    </div>
+                    <div class="form-group ">
+                        <label for="ranger">Ranger Name</label>
+                        <input type="text" class="form-control transparentInputFields" name="ranger" id="ranger">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" name="location" id="location" class="form-control transparentInputFields" list="locations">
+                        <datalist id="locations">
+                            <option value="Zone A"> Zone A</option>
+                            <option value="Zone B"> Zone B</option>
+                            <option value="Zone C">Zone C</option>
+                            <option value="Zone D">Zone D</option>
+                        </datalist>
+                    </div>
+                    <button type="submit" class="btn btn-info">submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{>layout.hbs}}

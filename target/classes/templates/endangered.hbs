@@ -1,0 +1,25 @@
+{{#partial "content"}}
+    <div class="row">
+        <div class="col">
+            <div class="container">
+                {{#if endangered}}
+                    {{#each endangered}}
+                        <div class="main">
+                           <div class="card">
+                               <div class="card-title">
+                                   <p>Animal Name: {{name}}</p>
+                               </div>
+                               <div class="card-body">
+                                   <p>Animal Status: {{health}}</p>
+                                   <p>Animal Age: {{age}}</p>
+                               </div>
+                           </div>
+                        </div>
+                    {{/each}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{>layout.hbs}}
