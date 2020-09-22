@@ -97,14 +97,13 @@ public class App {
 
 
 
-        post("/accepted/:id/edit", (request, response) -> {
+        post("/animals/:id/edit", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             int id = Integer.parseInt(request.params(":id"));
             String name = request.queryParams("name");
             Animal animal = Animal.find(id);
             animal.setName(name);
             animal.update();
-            response.redirect("/animals/" + id);
             return new ModelAndView(model, "ess.hbs");
         }, new HandlebarsTemplateEngine());
 

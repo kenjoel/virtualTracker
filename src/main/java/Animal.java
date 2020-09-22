@@ -102,7 +102,7 @@ public  class Animal {
             String sql = "UPDATE animals SET name = :name WHERE id = :id";
             con.createQuery(sql)
                     .addParameter("name", name)
-                    .addParameter("id", id)
+                    .addParameter("id", this.id)
                     .executeUpdate();
         }
     }
