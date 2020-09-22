@@ -1,0 +1,19 @@
+{{#partial "content"}}
+    <div class="row">
+        <div class="col">
+            <div class="container">
+                {{#if endangered}}
+                    {{#each endangered}}
+                        <div class="main">
+                            <p>{{health}}</p>
+                            <p>{{age}}</p>
+                            <p>{{name}}</p>
+                        </div>
+                    {{/each}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{>layout.hbs}}

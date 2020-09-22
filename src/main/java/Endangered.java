@@ -7,7 +7,7 @@ import java.util.List;
 public class Endangered{
     private int id;
     private String name;
-    private static int age;
+    private String age;
     private String health;
 
 
@@ -21,7 +21,7 @@ public class Endangered{
     public final int YOUNG = 4;
     public final int OLD = 8;
 
-    public Endangered(String name, String health, int age){
+    public Endangered(String name, String health, String age){
         this.name = name;
         this.health = health;
         this.age = age;
@@ -43,7 +43,7 @@ public class Endangered{
     }
 
     public static List<Endangered> relative_All(){
-        String sql = "SELECT * FROM endangered";
+        String sql = "SELECT * FROM endangered;";
         try(Connection con = DB.sql2o.open()){
             Query query =con.createQuery(sql);
             System.out.println(query.executeAndFetch(Endangered.class));
@@ -62,7 +62,7 @@ public class Endangered{
         }
     }
 
-    public static int getAge() {
+    public String getAge() {
         return age;
     }
 
@@ -74,9 +74,11 @@ public class Endangered{
         this.id = id;
     }
 
-    public String name(){
+    public String getName(){
         return name;
     }
 
-
+    public int getId() {
+        return id;
+    }
 }

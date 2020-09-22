@@ -41,6 +41,14 @@ public class App {
             return modelAndView(model,"sightingsForm.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/animals", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List peter = Endangered.relative_All();
+            System.out.println(peter.get(0));
+            model.put("endangered", peter);
+            return modelAndView(model, "endangered.hbs");
+        }, new HandlebarsTemplateEngine());
+
 //        //get: show a form to create a new category
 //        get("/categories/new", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
@@ -56,31 +64,25 @@ public class App {
             String rangername = req.queryParams("rangername");
             String location = req.queryParams("location");
 
-            res.redirect("/");
+            res.redirect("/endangered");
             return null;
         }, new HandlebarsTemplateEngine());
 
 
 
         //post methods
-        post("/endangered/new", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            String name = request.queryParams("name");
-            String health = request.queryParams("health");
-            int age = Integer.parseInt(request.queryParams("age"));
-            try {
-                Endangered endangered = new Endangered(name, health, age);
-                endangered.save();
-            } catch (IllegalArgumentException exception) {
-                System.out.println("Please enter all input fields.");
-            }
-            response.redirect("/animals");
-            return new ModelAndView(model, "endangered.hbs");
+        post("/success", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = req.queryParams("name");
+            String health = req.queryParams("health");
+            String age = req.queryParams("age");
+            Endangered endangered = new Endangered(name, health, age);
+            endangered.save();
+            System.out.println("Please enter all input fields.");
+            return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
 
     }
-
-
 
 
     }

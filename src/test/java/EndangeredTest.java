@@ -34,15 +34,15 @@ public class EndangeredTest {
 
     @Test
     public void newInstanceValid(){
-        Endangered endangered = new Endangered("panda", 3);
+        Endangered endangered = new Endangered("panda","okay","newborn");
         assertTrue(endangered instanceof Endangered);
     }
     @Test
     public void saveMethodWorks(){
-        Endangered tiger = new Endangered("tiger", 3);
-        Endangered.save(tiger);
+        Endangered tiger = new Endangered("tiger", "ill","old");
+        tiger.save();
         System.out.println("successfully saved");
-        assertEquals(tiger.getAnimalId(), Endangered.relative_All().get(0).getAnimalId());
+        assertEquals(tiger.name(), Endangered.relative_All().get(0).name());
         }
 
 }
