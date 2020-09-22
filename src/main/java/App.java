@@ -97,7 +97,7 @@ public class App {
 
 
 
-        post("/animals/:id/edit", (request, response) -> {
+        post("/accepted/:id/edit", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             int id = Integer.parseInt(request.params(":id"));
             String name = request.queryParams("name");
