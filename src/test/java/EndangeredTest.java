@@ -42,7 +42,7 @@ public class EndangeredTest {
         Endangered tiger = new Endangered("tiger", "ill","old");
         tiger.save();
         System.out.println("successfully saved");
-        assertEquals(tiger.name(), Endangered.relative_All().get(0).name());
+        assertEquals(tiger.getName(), Endangered.relative_All().get(0).getName());
         }
 
 }

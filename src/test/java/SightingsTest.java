@@ -39,10 +39,9 @@ public class SightingsTest {
     @Test
     public void saveMethodWorks(){
         Sightings bob = new Sightings("kangaroo", "ken", "Kenya");
-        Sightings.save(bob);
+        bob.save(bob);
         System.out.println("successfully saved");
         assertEquals(bob.getRangername(), Sightings.retrieveFromSightings().get(0).getRangername());
     }
-
 
 }

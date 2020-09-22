@@ -33,21 +33,23 @@ public class Sightings{
     }
 
     //Methods for the sightings Table
-    public static void save(Sightings sightings){
+    public  void save(Sightings sightings){
         String sql = "INSERT INTO sightings (animalname, rangername, location) VALUES (:animalname, :rangername, :location);";
         try(Connection connection = DB.sql2o.open()){
-             connection.createQuery(sql, true)
-                    .addParameter("animalname", sightings.animalname)
-                    .addParameter("rangername", sightings.rangername)
-                    .addParameter("location", sightings.location)
-                    .executeUpdate();
+             int id = (int) connection.createQuery(sql, true)
+                    .addParameter("animalname", animalname)
+                    .addParameter("rangername", rangername)
+                    .addParameter("location", location)
+                    .executeUpdate()
+                     .getKey();
+             setId(id);
         }catch (Sql2oException ex ){
             System.out.println(ex);
         }
     }
 
     public static List<Sightings> retrieveFromSightings(){
-        String sql = "SELECT * FROM sightings ";
+        String sql = "SELECT * FROM sightings;";
 
         try(Connection con = DB.sql2o.open()){
             Query query =con.createQuery(sql);
