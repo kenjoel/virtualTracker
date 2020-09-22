@@ -6,10 +6,12 @@
                     {{#each animals}}
                         <div class="main">
                             <p>Animal Name: {{name}}</p>
-                            <a class="btn btn-primary" href="/edit">EDIT</a>
+                            <a class="btn btn-primary" href="/animal/edit">EDIT</a>
                             <a class="btn btn-danger" href="/delete">DELETE</a>
                         </div>
                     {{/each}}
+                {{else}}
+                    <a href="/animalnew" class="btn btn-info">Add Animal</a>
                 {{/if}}
             </div>
         </div>

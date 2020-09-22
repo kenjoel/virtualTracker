@@ -62,7 +62,15 @@ public class App {
             return new ModelAndView(model,"sight.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/animal/:id/edit", (request, response) -> {
+
+        get("/newanimal", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List animal = Animal.relative_All();
+            model.put("animals", animal);
+            return new ModelAndView(model, "wildlife.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/animal/edit", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("animal", Animal.find(Integer.parseInt(request.params(":id"))));
             return new ModelAndView(model, "editForm.hbs");
@@ -79,14 +87,14 @@ public class App {
 
         //post: process a form to create a new category
 
-        post("/succ", (request, response) -> {
+        post("/ess", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             int id = Integer.parseInt(request.params(":id"));
             String name = request.queryParams("name");
             Animal animal = Animal.find(id);
             animal.setName(name);
             animal.update();
-            return new ModelAndView(model, "succ.hbs");
+            return new ModelAndView(model, "ess.hbs");
         }, new HandlebarsTemplateEngine());
 
 
@@ -122,9 +130,6 @@ public class App {
             animal.save();
             return new ModelAndView(model,"ess.hbs");
         }, new HandlebarsTemplateEngine());
-
-
     }
-
 
     }
