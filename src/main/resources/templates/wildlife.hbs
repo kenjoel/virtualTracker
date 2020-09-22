@@ -6,8 +6,8 @@
                     {{#each animals}}
                         <div class="main">
                             <p>Animal Name: {{name}}</p>
-                            <a class="btn btn-primary" href="/animal/edit">EDIT</a>
-                            <a class="btn btn-danger" href="/delete">DELETE</a>
+                            <a class="btn btn-primary" href="/animals/{{id}}/edit">EDIT</a>
+                            <a class="btn btn-danger" href="/animals/{{id}}/delete">DELETE</a>
                         </div>
                     {{/each}}
                 {{else}}
