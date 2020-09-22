@@ -1,0 +1,17 @@
+{{#partial "content"}}
+    <div class="row ">
+        <div class="col-4 ">
+            <div class="container" style="margin-left: 400px;margin-top:100px;">
+                <form action="/animals" method="post">
+                    <div class="form-group">
+                        <label for="name">Animal Name</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <button class="btn btn-info" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{>layout.hbs}}

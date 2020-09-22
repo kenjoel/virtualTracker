@@ -26,6 +26,11 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/animalnew", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "animalForm.hbs");
+        }, new HandlebarsTemplateEngine());
+
 //        //get: show a form to create a new category
 //        get("/categories/new", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
