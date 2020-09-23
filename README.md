@@ -1,9 +1,14 @@
-# virtualTracker
+# VirtualTracker
 
 This project was generated with [OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.8+10)
 ]() version 11.0.8.
 ---
-Here is a mini project that allows users to have a squad of their desired Heroes. They can create a Hero, see already existing Heroes and or make their own.
+This Application  allows Rangers to track wildlife sightings in the area and report the sightings thereby enabling efficient accountability.
+
+##Database Setup
+Install the latest version of PostgreSQL.
+If you want a specific version, use 'postgresql-12' or similar instead of 'postgresql':
+sudo apt-get -y install postgresql
 
 ## Development server
 
@@ -24,9 +29,9 @@ Run `build.test` to execute the unit tests via [jUnit](https://groovy-lang.org/t
 
 https://services.gradle.org/distributions/gradle-5.2.1-bin.zip to execute the end-to-end tests via [Junit](https://www.tutorialspoint.com/junit/junit_test_framework.htm).
 
-## Made With Love
+## Licenced
 
 *Ken Joel Muigai *
 ---
-2020
+
 
