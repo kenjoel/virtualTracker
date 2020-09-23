@@ -63,6 +63,14 @@ public  class Animal {
     }
 
 
+    public List<Sightings> testWhatsUp(){
+        String sql = "SELECT * FROM sightings;";
+        try(Connection con = DB.sql2o.open()){
+            return con.createQuery(sql).executeAndFetch(Sightings.class);
+        }
+    }
+
+
 
 
     public static List<Animal> relative_All(){

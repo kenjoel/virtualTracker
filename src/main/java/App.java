@@ -20,7 +20,7 @@ public class App {
         port(getHerokuAssignedPort());
         staticFileLocation("/public");
 
-        //postgresql-rugged-50609
+
 
 
         get("/", (req, res) -> {

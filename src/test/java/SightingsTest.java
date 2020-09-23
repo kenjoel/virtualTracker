@@ -13,8 +13,8 @@ public class SightingsTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        String connectionString = "jdbc:postgresql://localhost:5432/wildlife_tracker_test";               // "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "moringa", "://postgres");
+        String connection = "jdbc:postgresql://localhost:5432/wildlife_tracker";
+        Sql2o sql2o = new Sql2o(connection, "moringa", "://postgres");
         conn = sql2o.open(); //keep connection open through entire test so it does not get erased
     }
 
