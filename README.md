@@ -5,10 +5,15 @@ This project was generated with [OpenJDK Runtime Environment AdoptOpenJDK (build
 ---
 This Application  allows Rangers to track wildlife sightings in the area and report the sightings thereby enabling efficient accountability.
 
-##Database Setup
+## Database Setup
 Install the latest version of PostgreSQL.
 If you want a specific version, use 'postgresql-12' or similar instead of 'postgresql':
 sudo apt-get -y install postgresql
+
+CREATE DATABASE wildlife
+CREATE TABLE animals
+CREATE TABLE sightings
+CREATE TABLE endangered
 
 ## Development server
 
@@ -19,7 +24,7 @@ Run `Gradle run` for a dev environment. The app will automatically reload if you
 Build on Gradle and jUnit5 for test.
 
 ## Demo
-![](src/main/resources/public/images/see.png)
+![](src/main/resources/public/images/23.png)
 
 ## Running unit tests
 
